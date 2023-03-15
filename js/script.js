@@ -11,11 +11,12 @@
 
 // introduciamo come variabile, data per default, un array che rappresenta la lista della spesa
 
-const shoppingArray = ["mele", "pesche", "biscotti", "detersivi", "pasta", "acqua", "coca-cola"];
+const shoppingArray = ["8 mele", "12 pesche", "2 pacchi di biscotti", "3 pacchi di detersivi", "1 kg di pasta", "1 bancale d'acqua", "8 bottiglie di coca-cola"];
 console.log(shoppingArray, typeof shoppingArray);
 
-// voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL
+// voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL, e poi aggiungergli una classe (bootstrap)
 const listElem = document.createElement("ul");
+listElem.classList.add("text-white");
 console.log(listElem);
 
 //creo una variabile legata a un elemento presente gia in html, in questo caso .container, al cui Interno, usando giusta sintassi, inserisco, 
@@ -33,7 +34,7 @@ while (i < shoppingArray.length) {
     // console.log (shoppingArray[i]);
     // la lista listItem è formata dalla concatenazione di stringhe, opportunamente scritte con sintassi HTML,
     // di <li> progressivi dipendenti dall'indice i
-    listItem += `<li class= "text-white">${shoppingArray[i]}</li>`;
+    listItem += `<li>${shoppingArray[i]}</li>`;
     i++;
 }
 
