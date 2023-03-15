@@ -12,7 +12,7 @@
 // introduciamo come variabile, data per default, un array che rappresenta la lista della spesa
 
 const shoppingArray = ["8 mele", "12 pesche", "2 pacchi di biscotti", "3 pacchi di detersivi", "1 kg di pasta", "1 bancale d'acqua", "8 bottiglie di coca-cola"];
-console.log(shoppingArray, typeof shoppingArray);
+console.log(shoppingArray);
 
 // voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL, e poi aggiungergli qualche classe (bootstrap)
 const listElem = document.createElement("ul");
@@ -42,10 +42,12 @@ while (i < shoppingArray.length) {
 
 listElem.innerHTML = listItem;
 
+
+
 // #########################################################################################################################################################
 // MILESTONE 2
 
-// ho voluto aggiungere 2 eventi (button) uno per aggiungere elementi e l'altro per resettare elementi
+// ho voluto aggiungere 3 eventi (button) uno per aggiungere elementi e l'altro per resettare elementi, e l'altro per eliminare solo l ultimo
 
 
 // Creo un btn AGGIUNGI ELEMENTO con js
@@ -53,9 +55,9 @@ listElem.innerHTML = listItem;
 const addButton = document.createElement("button");
 
 // aggiungo classi con JS, ma non so perche se uso la sintassi addButton.classlist.add("btn btn-primary max-3") non funziona niente e addirittura scompare, quindi ho scritto 3 righe
-addButton.classList.add("btn");
-addButton.classList.add("btn-primary");
-addButton.classList.add("mx-3");
+addButton.classList.add("btn", "btn-primary", "m-3");
+// addButton.classList.add("btn-primary");
+// addButton.classList.add("mx-3");
 
 
 // aggiungo testo all'interno di btn creato 
@@ -64,13 +66,53 @@ addButton.innerText = "Aggiungi elemento";
 // AL CLICK DI AGGIUNGI .....................
 addButton.addEventListener("click", function() {
     const newItem = prompt("Inserisci il nuovo elemento:");
+
+    if (listElem.innerHTML = ""){
+        listItem += `<li>${shoppingArray[i]}</li>`;
+        i++
+    }
+    
     if (newItem) {
         shoppingArray.push(newItem);
-        listItem += `<li>${newItem}</li>`;
+        listItem += `<li>${shoppingArray[i]}</li>`;
         listElem.innerHTML = listItem;
     }
 });
 container.append(addButton);
+
+
+// Creo un btn CANCELLA ULTIMO ELEMENTO LISTA con js
+
+const greenButton = document.createElement("button");
+
+//stesso problema della riga 56
+greenButton.classList.add("btn", "btn-success", "m-3");
+
+// aggiungo testo all'interno di btn creato
+greenButton.innerText = "Cancella ultimo elemento";
+
+
+
+// AL CLICK DI CANCELLA ELEMENTO LISTA .....................cancello l'ultimo elemento
+greenButton.addEventListener("click", function() {   
+    if (shoppingArray.length !== 0){
+
+        shoppingArray.pop();
+        listItem = "";
+        i = 0;
+        while (i < shoppingArray.length) {
+            listItem += `<li>${shoppingArray[i]}</li>`;
+            i++;
+        }
+        
+        listElem.innerHTML = listItem;
+    }else {
+        alert('lista gia vuota');
+    }
+    
+});
+
+container.append(greenButton);
 
 
 
@@ -79,10 +121,8 @@ container.append(addButton);
 
 const clearButton = document.createElement("button");
 
-//stesso problema della riga 56
-clearButton.classList.add("btn");
-clearButton.classList.add("btn-danger");
-clearButton.classList.add("mx-3");
+clearButton.classList.add("btn", "btn-danger", "m-3");
+
 
 
 // aggiungo testo all'interno di btn creato
