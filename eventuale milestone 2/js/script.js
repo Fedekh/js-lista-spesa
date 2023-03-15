@@ -67,14 +67,15 @@ addButton.innerText = "Aggiungi elemento";
 addButton.addEventListener("click", function() {
     const newItem = prompt("Inserisci il nuovo elemento:");
 
-    if (listElem.innerHTML = ""){
-        listItem += `<li>${shoppingArray[i]}</li>`;
-        i++
+    //verificare se la lista è vuota, eventualmente dopo aver cliccato redbtn
+    if (!listElem.innerHTML){
+        //Re-inizializzo la variabile solo se la lista è vuota
+        listItem ="";        
     }
     
     if (newItem) {
         shoppingArray.push(newItem);
-        listItem += `<li>${shoppingArray[i]}</li>`;
+        listItem += `<li>${shoppingArray[shoppingArray.length - 1]}</li>`;
         listElem.innerHTML = listItem;
     }
 });
@@ -91,11 +92,14 @@ greenButton.classList.add("btn", "btn-success", "m-3");
 // aggiungo testo all'interno di btn creato
 greenButton.innerText = "Cancella ultimo elemento";
 
-
-
 // AL CLICK DI CANCELLA ELEMENTO LISTA .....................cancello l'ultimo elemento
 greenButton.addEventListener("click", function() {   
-    if (shoppingArray.length !== 0){
+
+    //verificare se la lista è vuota, eventualmente dopo aver cliccato redbtn
+    if (!listElem.innerHTML){
+        
+        alert('ATTENZIONE LA LISTA E\' GIA VUOTA');       
+    } if (shoppingArray.length !== 0){
 
         shoppingArray.pop();
         listItem = "";
@@ -106,10 +110,7 @@ greenButton.addEventListener("click", function() {
         }
         
         listElem.innerHTML = listItem;
-    }else {
-        alert('lista gia vuota');
     }
-    
 });
 
 container.append(greenButton);
@@ -131,7 +132,7 @@ clearButton.innerText = "Cancella lista";
 // AL CLICK DI CANCELLA LISTA .....................cancello tutti gli elementi di UL
 clearButton.addEventListener("click", function() {
   listElem.innerHTML = "";
-
+  
 });
 
 container.append(clearButton);
