@@ -1,7 +1,15 @@
+/* DEFAULT */
+
 body {
     background-color: rgb(51, 53, 53); 
 }
 
 .img {
     max-width: 100%;
+}
+
+ul {
+    list-style-type: none;    
+    /* debug */
+    /* border: 1px solid green; */
 }
