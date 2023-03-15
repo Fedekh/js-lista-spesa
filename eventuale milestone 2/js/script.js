@@ -14,9 +14,9 @@
 const shoppingArray = ["8 mele", "12 pesche", "2 pacchi di biscotti", "3 pacchi di detersivi", "1 kg di pasta", "1 bancale d'acqua", "8 bottiglie di coca-cola"];
 console.log(shoppingArray, typeof shoppingArray);
 
-// voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL, e poi aggiungergli una classe (bootstrap)
+// voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL, e poi aggiungergli qualche classe (bootstrap)
 const listElem = document.createElement("ul");
-listElem.classList.add("text-white");
+listElem.classList.add("text-white", "text-center");
 console.log(listElem);
 
 //creo una variabile legata a un elemento presente gia in html, in questo caso .container, al cui Interno, usando giusta sintassi, inserisco, 
@@ -42,4 +42,56 @@ while (i < shoppingArray.length) {
 
 listElem.innerHTML = listItem;
 
+// #########################################################################################################################################################
+// MILESTONE 2
 
+// ho voluto aggiungere 2 eventi (button) uno per aggiungere elementi e l'altro per resettare elementi
+
+
+// Creo un btn AGGIUNGI ELEMENTO con js
+
+const addButton = document.createElement("button");
+
+// aggiungo classi con JS, ma non so perche se uso la sintassi addButton.classlist.add("btn btn-primary max-3") non funziona niente e addirittura scompare, quindi ho scritto 3 righe
+addButton.classList.add("btn");
+addButton.classList.add("btn-primary");
+addButton.classList.add("mx-3");
+
+
+// aggiungo testo all'interno di btn creato 
+addButton.innerText = "Aggiungi elemento";
+
+// AL CLICK DI AGGIUNGI .....................
+addButton.addEventListener("click", function() {
+    const newItem = prompt("Inserisci il nuovo elemento:");
+    if (newItem) {
+        shoppingArray.push(newItem);
+        listItem += `<li>${newItem}</li>`;
+        listElem.innerHTML = listItem;
+    }
+});
+container.append(addButton);
+
+
+
+
+// Creo un btn CANCELLA LISTA con js
+
+const clearButton = document.createElement("button");
+
+//stesso problema della riga 56
+clearButton.classList.add("btn");
+clearButton.classList.add("btn-danger");
+clearButton.classList.add("mx-3");
+
+
+// aggiungo testo all'interno di btn creato
+clearButton.innerText = "Cancella lista";
+
+// AL CLICK DI CANCELLA LISTA .....................cancello tutti gli elementi di UL
+clearButton.addEventListener("click", function() {
+  listElem.innerHTML = "";
+
+});
+
+container.append(clearButton);
