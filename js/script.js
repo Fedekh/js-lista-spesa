@@ -15,7 +15,7 @@ const shoppingArray = ["8 mele", "12 pesche", "2 pacchi di biscotti", "3 pacchi 
 console.log(shoppingArray, typeof shoppingArray);
 
 // voglio provare a usare questo tipo di manipolazione, creando elementi con js, in questo caso UL, e poi aggiungergli una classe (bootstrap)
-const listElem = document.querySelector("ul");
+let listElem = document.createElement("ul");
 listElem.classList.add("text-white");
 console.log(listElem);
 

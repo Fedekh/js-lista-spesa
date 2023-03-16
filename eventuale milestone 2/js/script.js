@@ -97,6 +97,7 @@ greenButton.addEventListener("click", function() {
 
     //verificare se la lista è vuota, eventualmente dopo aver cliccato redbtn
     if (!listElem.innerHTML){
+        console.log(listElem.innerHTML);
         
         alert('ATTENZIONE LA LISTA E\' GIA VUOTA');       
     } if (shoppingArray.length !== 0){
